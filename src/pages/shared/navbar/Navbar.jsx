@@ -3,7 +3,7 @@ import { AuthContext } from '../../../providers/AuthProviders';
 import { Tooltip } from 'react-tooltip';
 import Avatar from '../../../components/avatar/Avatar';
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 const Navbar = () => {
     const { user, logout, flag } = useContext(AuthContext);
@@ -14,17 +14,41 @@ const Navbar = () => {
             .catch()
     }
     const navlinks = <> 
-    <li><a>Item 1</a></li>
+    <li><NavLink to="/">Home</NavLink></li>
+    <li><a>Need Volunteer</a></li>
                     <li>
                         <details>
-                            <summary>Parent</summary>
+                            <summary>My Profile</summary>
                             <ul className="p-2">
-                                <li><a>Submenu 1</a></li>
-                                <li><a>Submenu 2</a></li>
+                                <li><a>Add Volunteer Post</a></li>
+                                <li><a>Manage My Post</a></li>
                             </ul>
                         </details>
                     </li>
-                    <li><a>Item 3</a></li>
+
+                    <li> {
+            user && (user.photoURL || flag) ?
+                <>
+
+
+                    <button onClick={handleSignOut} className="md:hidden bg-gradient-to-r from-green-400 to-blue-500 border border-gray-300 text-white px-6 py-3 rounded-lg shadow-md hover:bg-gradient-to-r hover:from-green-500 hover:to-blue-600 transition duration-300 font-bold ">
+                        Sign out
+                    </button>
+                </>
+
+                :
+                <>
+                    <button onClick={handleSignOut} className="md:hidden bg-gradient-to-r from-green-400 to-blue-500 border border-gray-300 text-white px-6 py-3 rounded-lg shadow-md hover:bg-gradient-to-r hover:from-green-500 hover:to-blue-600 transition duration-300 font-bold ">
+                        Log in
+                    </button>
+                    <button onClick={handleSignOut} className="md:hidden bg-gradient-to-r from-green-400 to-blue-500 border border-gray-300 text-white px-6 py-3 rounded-lg shadow-md hover:bg-gradient-to-r hover:from-green-500 hover:to-blue-600 transition duration-300 font-bold ">
+                        Register
+                    </button>
+                </>
+
+
+        }</li>
+                   
     </>
     return (
         <div className="navbar bg-base-100 container mx-auto">

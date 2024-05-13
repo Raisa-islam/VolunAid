@@ -4,6 +4,8 @@ import Home from '../pages/home/Home';
 import ErrorPage from '../pages/error/ErrorPage';
 import Login from '../pages/login/Login';
 import Register from '../pages/resgistration/Register';
+import AddVolunteerPost from '../pages/addVolunteerPost/AddVolunteerPost';
+import PrivateRoutes from './PrivateRoutes';
 
 
 
@@ -27,6 +29,10 @@ const router = createBrowserRouter([
         path: "/register",
         element: <Register></Register>,
       },
+      {
+        path:"/add-volunteer-post",
+        element:<PrivateRoutes><AddVolunteerPost></AddVolunteerPost> </PrivateRoutes>    
+      }
    
     ]
   },

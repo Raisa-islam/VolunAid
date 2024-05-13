@@ -6,7 +6,6 @@ import {
 } from "react-router-dom";
 import { HelmetProvider } from 'react-helmet-async';
 import AuthProviders from './providers/AuthProviders';
-import { ToastContainer } from 'react-toastify';
 import router from './routes/Routes';
 
 

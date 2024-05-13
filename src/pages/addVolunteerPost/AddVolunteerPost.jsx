@@ -2,11 +2,13 @@ import { Helmet } from 'react-helmet';
 import addvoli from '../../assets/download-removebg-preview.png'
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../providers/AuthProviders';
-import { SlCalender } from "react-icons/sl";
-import ReactDatePicker from 'react-datepicker';
+import Datepicker from 'react-datepicker'
+import 'react-datepicker/dist/react-datepicker.css'
+import { toast } from 'react-toastify';
+
 const AddVolunteerPost = () => {
     const { user } = useContext(AuthContext);
-    const [startDate, setStartDate] = useState(new Date());
+    const [selectedDate, setSelectedDate] = useState(new Date());
     const handlePost = (e) => {
         e.preventDefault();
         const thumbnail = e.target.elements.thumbnail.value;
@@ -20,8 +22,33 @@ const AddVolunteerPost = () => {
 
         //date picking baki
 
-        console.log(thumbnail, title, description, name, email, category, location, noOfVol)
+        console.log(thumbnail, title, description, name, email, category, location, noOfVol, selectedDate)
+        const itemObj = { thumbnail, title, description, category, location, noOfVol, selectedDate, name, email };
+        console.log(itemObj);
 
+        fetch('http://localhost:5001/addVolPost/All', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(itemObj)
+        })
+            .then(res => {
+                if (!res.ok) {
+                    throw new Error('Network response was not ok ' + res.statusText);
+                }
+                return res.json();
+            })
+            .then(data => {
+                console.log(data);
+                // Clear the form here after successful submission
+                e.target.reset();
+                toast.success("Post added successfully!");
+            })
+            .catch(error => {
+                console.error('There has been a problem with your fetch operation:', error);
+                toast.error("Failed to add the item. Please try again!");
+            });
 
     }
     return (
@@ -69,20 +96,20 @@ const AddVolunteerPost = () => {
                         </div>
 
                         <div className="form-control w-full lg:w-[60%] flex flex-col gap-4">
-                        <div className="label w-fit">
-                            <span className="label-text font-medium text-xl">Select Category Name:</span>
+                            <div className="label w-fit">
+                                <span className="label-text font-medium text-xl">Select Category Name:</span>
+
+                            </div>
+                            <select className="select select-primary w-full md:max-w-[80%]" name="category">
+                                <option value='Healthcare'>Healthcare</option>
+                                <option value='Education'>Education</option>
+                                <option value='Social Service'>Social Service</option>
+                                <option value='Animal Welfare'>Animal Welfare</option>
+                            </select>
 
                         </div>
-                        <select className="select select-primary w-full md:max-w-[80%]" name="category">
-                            <option value='Healthcare'>Healthcare</option>
-                            <option value='Education'>Education</option>
-                            <option value='Social Service'>Social Service</option>
-                            <option value='Animal Welfare'>Animal Welfare</option>
-                        </select>
 
-                    </div>
-
-                    <div className="form-control w-full flex flex-col gap-4">
+                        <div className="form-control w-full flex flex-col gap-4">
                             <div className="label w-fit">
                                 <span className="label-text font-medium text-xl">Enter Location:</span>
 
@@ -98,7 +125,7 @@ const AddVolunteerPost = () => {
 
                             </div>
                             <input type="number" placeholder="Type here" className="input input-bordered input-primary w-full md:max-w-[80%]" name='noOfVol' required />
-                            
+
                         </div>
 
                         <div className="form-control w-full flex flex-col gap-4">
@@ -106,9 +133,14 @@ const AddVolunteerPost = () => {
                                 <span className="label-text font-medium text-xl">Enter Deadline:</span>
 
                             </div>
-                            <input type="text" placeholder="Type here" className="input input-bordered input-primary w-full md:max-w-[80%]" name='description' required />
 
-
+                            <Datepicker
+                                showIcon
+                                toggleCalendarOnIconClick
+                                selected={selectedDate}
+                                onChange={(date) => setSelectedDate(date)}
+                                className='rounded-xl border border-blue-700'
+                            />
                         </div>
 
                         <div className="form-control w-full flex flex-col gap-4">
@@ -126,18 +158,18 @@ const AddVolunteerPost = () => {
                                 <span className="label-text font-medium text-xl">Organizer Email:</span>
 
                             </div>
-                            <input type="text" placeholder="Type here" className="input input-bordered input-primary w-full md:max-w-[80%]" name='email' value={user.email} required readOnly/>
+                            <input type="text" placeholder="Type here" className="input input-bordered input-primary w-full md:max-w-[80%]" name='email' value={user.email} required readOnly />
 
 
                         </div>
 
                         <div className='flex justify-center'>
                             <button className="hidden md:flex bg-gradient-to-r from-[#495597] to-[#7794ed]  text-white px-6 py-2 rounded-2xl hover:bg-[#3d4575] transition duration-300 font-bold mt-6" type='submit'>
-                                    Add Post
-                                </button>
+                                Add Post
+                            </button>
                         </div>
 
-                        
+
                     </form>
                 </div>
             </div>

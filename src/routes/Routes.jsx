@@ -6,6 +6,7 @@ import Login from '../pages/login/Login';
 import Register from '../pages/resgistration/Register';
 import AddVolunteerPost from '../pages/addVolunteerPost/AddVolunteerPost';
 import PrivateRoutes from './PrivateRoutes';
+import NeedVolunteer from '../pages/needVolunteer/NeedVolunteer';
 
 
 
@@ -32,6 +33,11 @@ const router = createBrowserRouter([
       {
         path:"/add-volunteer-post",
         element:<PrivateRoutes><AddVolunteerPost></AddVolunteerPost> </PrivateRoutes>    
+      },
+      {
+        path:"/needVolunteer",
+        element:<NeedVolunteer></NeedVolunteer>,
+
       }
    
     ]

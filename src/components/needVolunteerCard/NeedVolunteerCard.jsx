@@ -1,15 +1,19 @@
+import { Link } from "react-router-dom";
 
 
 const NeedVolunteerCard = ({item}) => {
-    const {_id, title, location, date} = item;
+    const {_id, title, thumbnail, location, date} = item;
     return (
-        <div className="card w-96 bg-base-100 shadow-xl image-full">
-        <figure><img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
+        <div className="card w-full bg-base-100 shadow-xl">
         <div className="card-body">
-          <h2 className="card-title">Shoes!</h2>
-          <p>If a dog chews shoes whose shoes does he choose?</p>
+          <h2 className="card-title">{title}</h2>
+          <p>{thumbnail}</p>
+          <p>{location}</p>
+          <p>{date}</p>
           <div className="card-actions justify-end">
-            <button className="btn btn-primary">Buy Now</button>
+          <Link to={`/view-post-details/${_id}`}>
+            <button className="btn btn-primary">View Details</button>
+            </Link>
           </div>
         </div>
       </div>

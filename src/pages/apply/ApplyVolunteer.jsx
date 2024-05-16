@@ -191,7 +191,7 @@ const ApplyVolunteer = () => {
                         </div>
 
                         <div className='flex justify-center'>
-                            <button className="hidden md:flex bg-gradient-to-r from-[#495597] to-[#7794ed]  text-white px-6 py-2 rounded-2xl hover:bg-[#3d4575] transition duration-300 font-bold mt-6" disabled={applyDone===1} type='submit'>
+                            <button className="md:flex bg-gradient-to-r from-[#495597] to-[#7794ed]  text-white px-6 py-2 rounded-2xl hover:bg-[#3d4575] transition duration-300 font-bold mt-6" disabled={applyDone===1} type='submit'>
                                 Apply
                             </button>
                         </div>

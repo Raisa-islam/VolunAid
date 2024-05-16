@@ -4,6 +4,7 @@ import { Tooltip } from 'react-tooltip';
 import Avatar from '../../../components/avatar/Avatar';
 import { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import logoi from '../../../assets/logo11_prev_ui.png'
 
 const Navbar = () => {
     const { user, logout, flag } = useContext(AuthContext);
@@ -62,6 +63,7 @@ const Navbar = () => {
                             {navlinks}
                         </ul>
                     </div>
+                    <img src={logoi} alt="" className='w-12 h-12' />
                     <a className="btn btn-ghost text-xl">Volun Aid</a>
                 </div>
                 <div className="navbar-center hidden lg:flex">

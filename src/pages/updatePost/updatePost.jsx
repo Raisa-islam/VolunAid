@@ -1,16 +1,16 @@
 import { Helmet } from "react-helmet-async";
-import { useLoaderData, Link } from "react-router-dom";
+import { useLoaderData, Link, useNavigate } from "react-router-dom";
 import Datepicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
-import { toast } from 'react-toastify';
 import addvoli from '../../assets/download-removebg-preview.png'
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../providers/AuthProviders';
-
+import Swal from 'sweetalert2'
 const UpdatePost = () => {
     const item = useLoaderData()
     
     console.log("update Post Page")
+    const navigate = useNavigate();
     
     const { user } = useContext(AuthContext);
     const {_id, thumbnail, title, description, location, selectedDate, category, noOfVol} = item
@@ -41,17 +41,33 @@ const UpdatePost = () => {
         .then(res => res.json())
         .then(data=>{
             console.log(data);
-            toast.success("Post updated successfully!");
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Updated Successfully",
+                showConfirmButton: false,
+                timer: 1500
+              });
+            navigate('/managePost');
+            
         })
         .catch((error)=>{
             console.log(error)
-            toast.error("Failed to update!")
+            Swal.fire({
+                position: "top-end",
+                icon: "error",
+                title: "An Error Ocurred",
+                showConfirmButton: false,
+                timer: 1500
+              });
+           
         })
 
     }
 
     return (
          <div className='container mx-auto max-w-[80%] lg:max-w-[60%] mt-12'>
+        
 
             <Helmet>
                 <title>VolunAid | Update Post</title>
@@ -163,10 +179,10 @@ const UpdatePost = () => {
                         </div>
 
                         <div className='flex justify-center'>
-                            <Link to='/managePost'>
+                            
                             <button className="md:flex bg-gradient-to-r from-[#495597] to-[#7794ed]  text-white px-6 py-2 rounded-2xl hover:bg-[#3d4575] transition duration-300 font-bold mt-6" type='submit'>
                                 Update Post
-                            </button></Link>
+                            </button>
                         </div>
 
 

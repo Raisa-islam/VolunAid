@@ -4,8 +4,7 @@ import { useContext, useState } from 'react';
 import { AuthContext } from '../../providers/AuthProviders';
 import Datepicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
-import { toast } from 'react-toastify';
-
+import Swal from 'sweetalert2'
 const AddVolunteerPost = () => {
     const { user } = useContext(AuthContext);
     const [selectedDate, setSelectedDate] = useState(new Date());
@@ -43,11 +42,23 @@ const AddVolunteerPost = () => {
                 console.log(data);
                 // Clear the form here after successful submission
                 e.target.reset();
-                toast.success("Post added successfully!");
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Post Added Successfully",
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
             })
             .catch(error => {
                 console.error('There has been a problem with your fetch operation:', error);
-                toast.error("Failed to add the item. Please try again!");
+                Swal.fire({
+                    position: "top-end",
+                    icon: "error",
+                    title: "An Error Ocurred",
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
             });
 
     }

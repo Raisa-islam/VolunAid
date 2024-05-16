@@ -1,14 +1,15 @@
 
 import { Helmet } from 'react-helmet';
 import addvoli from '../../assets/download-removebg-preview.png'
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData, useNavigate } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../providers/AuthProviders';
-import { toast } from 'react-toastify';
+import Swal from 'sweetalert2'
 const ApplyVolunteer = () => {
     const item = useLoaderData();
     console.log(item);
     const [ applyDone, setApplyDone] = useState(0)
+    const navigate = useNavigate();
 
     const {_id, thumbnail, title, category, description, name, email, location, noOfVol, selectedDate}= item
     const {user} = useContext(AuthContext)
@@ -40,11 +41,23 @@ const ApplyVolunteer = () => {
                 console.log(data);
                 // Clear the form here after successful submission
                 e.target.reset();
-                toast.success("Applied successfully!");
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Applied Successfully",
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
             })
             .catch(error => {
                 console.error('There has been a problem with your fetch operation:', error);
-                toast.error("Failed to add the item. Please try again!");
+                Swal.fire({
+                    position: "top-end",
+                    icon: "error",
+                    title: "Failed to Apply",
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
             });
             const noOf = noOfVol-1
             console.log(noOf)
@@ -60,6 +73,7 @@ const ApplyVolunteer = () => {
             .then(res => res.json())
             .then(data=>{
                 console.log(data);
+                navigate('/needVolunteer')
                 
             })
             .catch((error)=>{
@@ -68,7 +82,8 @@ const ApplyVolunteer = () => {
             })
 
             setApplyDone(1)
-            toast.success("Successfully applied!")
+            
+            
     }
     return (
         <div className='container mx-auto max-w-[80%] lg:max-w-[60%] mt-12'>
@@ -212,9 +227,9 @@ const ApplyVolunteer = () => {
                         </div>
 
                         <div className='flex justify-center'>
-                            <Link to='/needVolunteer'><button className="md:flex bg-gradient-to-r from-[#495597] to-[#7794ed]  text-white px-6 py-2 rounded-2xl hover:bg-[#3d4575] transition duration-300 font-bold mt-6" disabled={applyDone===1} type='submit'>
+                            <button className="md:flex bg-gradient-to-r from-[#495597] to-[#7794ed]  text-white px-6 py-2 rounded-2xl hover:bg-[#3d4575] transition duration-300 font-bold mt-6" disabled={applyDone===1} type='submit'>
                                 Apply
-                            </button></Link>
+                            </button>
                         </div>
 
 

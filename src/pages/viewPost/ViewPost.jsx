@@ -71,7 +71,7 @@ const ViewPost = () => {
                             <p className='text-xl font-medium'>{name}</p>
                         </div>
 
-                        <div className="form-control w-full flex md:flex-col gap-2 justify-start items-start">
+                        <div className="form-control w-full flex flex-col md:flex-row gap-2 justify-start items-start">
                             <div className="label w-fit">
                                 <span className="label-text font-semibold text-xl">Description:</span>
 

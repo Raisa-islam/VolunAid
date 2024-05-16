@@ -7,16 +7,8 @@ const AppliedPost = ({ item, idx, handleDeleteApplied }) => {
     const date = selectedDate.slice(0,10)
     const [unit, setUnit] = useState([])
     const deleteItem = () => {
-        handleDeleteApplied(_id);
-        fetch(`https://b9a11-server-six.vercel.app/post/${_id}/${postId}`,{
-            method: 'DELETE'
-        })
-        .then(res => res.json())
-        .then(data =>{
-            console.log(data);
-            toast.success("Cancelation of the event done")
-        })
-        console.log("item is deleted", _id);
+        handleDeleteApplied(_id,postId);
+        
 
     }
     return (

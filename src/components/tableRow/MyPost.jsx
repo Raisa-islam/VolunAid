@@ -7,17 +7,9 @@ const MyPost = ({ item, idx, handleDeleteMyPost }) => {
     const date = selectedDate.slice(0,10)
 
     const onDelete = () => {
-        handleDeleteMyPost()
-
-        fetch(`https://b9a11-server-six.vercel.app/allVolPost/${_id}`,{
-            method: 'DELETE'
-        })
-        .then(res => res.json())
-        .then(data =>{
-            console.log(data);
-            toast.success("Cancelation of the event done")
-        })
-        console.log("item is deleted", _id);
+       
+        handleDeleteMyPost(_id)
+       
     }
     return (
         <tr>

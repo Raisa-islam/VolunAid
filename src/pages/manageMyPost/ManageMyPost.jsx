@@ -37,7 +37,7 @@ const ManageMyPost = () => {
             <Helmet><title>VolunAid | My Posts</title></Helmet>
             <div className='w-full'>
                 <div role="tablist" className="tabs tabs-lifted">
-                    <input type="radio" name="my_tabs_1" role="tab" className="tab" aria-label="My Volunteer Need Post" />
+                    <input type="radio" name="my_tabs_1" role="tab" className="tab" aria-label="My Volunteer Need Post"/>
                     <div role="tabpanel" className="tab-content p-10">
                         <table className="table table-zebra">
                            

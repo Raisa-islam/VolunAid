@@ -10,6 +10,7 @@ import NeedVolunteer from '../pages/needVolunteer/NeedVolunteer';
 import ViewPost from '../pages/viewPost/ViewPost';
 import ApplyVolunteer from '../pages/apply/ApplyVolunteer';
 import ManageMyPost from '../pages/manageMyPost/ManageMyPost';
+import UpdatePost from '../pages/updatePost/UpdatePost';
 
 
 
@@ -56,6 +57,11 @@ const router = createBrowserRouter([
       {
         path:"/managePost",
         element:<PrivateRoutes><ManageMyPost></ManageMyPost></PrivateRoutes>
+      }, 
+      {
+        path:"/updatePost/:id",
+        element:<PrivateRoutes><UpdatePost></UpdatePost></PrivateRoutes>,
+        loader: ({params}) => fetch(`http://localhost:5001/addVolPost/All/${params.id}`)
       }
    
     ]

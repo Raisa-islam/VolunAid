@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet";
+
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -7,11 +7,14 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
-
 import SliderCard from "../../components/slider/SliderCard";
+import { Helmet } from 'react-helmet-async';
+import { useLoaderData } from 'react-router-dom';
 
 const Home = () => {
-    const random = [1, 2, 3, 4, 5]
+    const item = useLoaderData()
+    console.log(item)
+    const random = item.slice(0, 5)
     return (
         <div className="">
              <Helmet>

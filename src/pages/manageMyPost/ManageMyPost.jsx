@@ -33,13 +33,13 @@ const ManageMyPost = () => {
 
     }
     return (
-        <div className='container mx-auto mt-12'>
+        <div className='container mx-auto mt-12  max-w-[80%]'>
             <Helmet><title>VolunAid | My Posts</title></Helmet>
             <div className='w-full'>
                 <div role="tablist" className="tabs tabs-lifted">
                     <input type="radio" name="my_tabs_1" role="tab" className="tab w-fit" aria-label="My Volunteer Need Post" />
-                    <div role="tabpanel" className="tab-content p-10 w-full">
-                        <div className='w-full overflow-x-auto'>
+                    <div role="tabpanel" className="tab-content w-full  overflow-x-auto">
+                       
                             <table className="table table-zebra">
 
                                 <thead>
@@ -58,11 +58,11 @@ const ManageMyPost = () => {
                                     {myPosts.map((item) => <MyPost key={item._id} item={item} idx={idx1++} handleDeleteMyPost={handleDeleteMyPost}></MyPost>)}
                                 </tbody>
                             </table>
-                        </div>
+                      
                     </div>
 
                     <input type="radio" name="my_tabs_1" role="tab" className="tab" aria-label="My Volunteer Request Post" />
-                    <div role="tabpanel" className="tab-content p-10">
+                    <div role="tabpanel" className="tab-content w-full overflow-x-auto">
                         <table className="table table-zebra">
 
                             <thead>

@@ -1,8 +1,14 @@
-
+import logoi from '../../../assets/logo11_prev_ui.png'
 
 const Footer = () => {
   return (
     <footer className="footer footer-center p-10 bg-gradient-to-r from-[#c8e1f8] to-[#e2f0fc] text-base-content rounded">
+      <div>
+      <img src={logoi} alt="" className='w-12 h-11'/>
+      <h1 className='text-xl font-semibold'>Volun Aid Management</h1>
+      <p className='text-lg font-medium'>For the betterment of the society</p>
+      </div>
+      
       <nav className="grid grid-flow-col gap-4">
         <a className="link link-hover">About us</a>
         <a className="link link-hover">Contact</a>

@@ -11,6 +11,7 @@ import ViewPost from '../pages/viewPost/ViewPost';
 import ApplyVolunteer from '../pages/apply/ApplyVolunteer';
 import ManageMyPost from '../pages/manageMyPost/ManageMyPost';
 import UpdatePost from '../pages/updatePost/UpdatePost';
+import CategoryWisePost from '../pages/category/CategoryWisePost';
 
 
 
@@ -23,7 +24,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: ()=> fetch('http://localhost:5001/addVolPost/All')
+        loader: ()=> fetch('https://b9a11-server-six.vercel.app/addVolPost/All')
         
        
       },
@@ -48,13 +49,13 @@ const router = createBrowserRouter([
       {
         path:"/view-post-details/:id",
         element:<PrivateRoutes><ViewPost></ViewPost></PrivateRoutes>,
-        loader: ({params}) => fetch(`http://localhost:5001/addVolPost/All/${params.id}`)
+        loader: ({params}) => fetch(`https://b9a11-server-six.vercel.app/addVolPost/All/${params.id}`)
       },
 
       {
         path:"/applyPost/:id",
         element:<PrivateRoutes><ApplyVolunteer></ApplyVolunteer></PrivateRoutes>,
-        loader: ({params}) => fetch(`http://localhost:5001/addVolPost/All/${params.id}`)
+        loader: ({params}) => fetch(`https://b9a11-server-six.vercel.app/addVolPost/All/${params.id}`)
       },
       {
         path:"/managePost",
@@ -63,7 +64,12 @@ const router = createBrowserRouter([
       {
         path:"/updatePost/:id",
         element:<PrivateRoutes><UpdatePost></UpdatePost></PrivateRoutes>,
-        loader: ({params}) => fetch(`http://localhost:5001/addVolPost/All/${params.id}`)
+        loader: ({params}) => fetch(`https://b9a11-server-six.vercel.app/addVolPost/All/${params.id}`)
+      },
+      {
+        path:"/post/:category",
+        element:<CategoryWisePost></CategoryWisePost>,
+        loader: ({params}) => fetch(`https://b9a11-server-six.vercel.app/posts/${params.category}`)
       }
    
     ]

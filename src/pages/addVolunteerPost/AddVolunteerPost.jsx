@@ -16,17 +16,17 @@ const AddVolunteerPost = () => {
         const description = e.target.elements.description.value;
         const category = e.target.elements.category.value;
         const location = e.target.elements.location.value;
-        const noOfVol = e.target.elements.noOfVol.value;
+        const noOf = e.target.elements.noOfVol.value;
         const name = e.target.elements.name.value;
         const email = e.target.elements.email.value;
 
         //date picking baki
-
+        const noOfVol = parseInt(noOf)
         console.log(thumbnail, title, description, name, email, category, location, noOfVol, selectedDate)
         const itemObj = { thumbnail, title, description, category, location, noOfVol, selectedDate, name, email };
         console.log(itemObj);
 
-        fetch('http://localhost:5001/addVolPost/All', {
+        fetch('https://b9a11-server-six.vercel.app/addVolPost/All', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

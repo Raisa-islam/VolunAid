@@ -105,11 +105,11 @@ const AuthProviders = ({ children }) => {
 
             if(currentUser){
                 
-                axios.post('http://localhost:5001/jwt',loggedUser, {withCredentials: true})
+                axios.post('https://b9a11-server-six.vercel.app/jwt',loggedUser, {withCredentials: true})
                 .then(res=>{console.log('token',res.data)})
             }
             else{
-                axios.post('http://localhost:5001/logout',loggedUser, {withCredentials: true})
+                axios.post('https://b9a11-server-six.vercel.app/logout',loggedUser, {withCredentials: true})
                 .then(res=>{console.log('token',res.data)})
             }
             

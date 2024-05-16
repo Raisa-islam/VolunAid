@@ -9,16 +9,17 @@ const ManageMyPost = () => {
     const { user } = useContext(AuthContext)
     const [myPosts, setMyPosts] = useState([])
     const [appliedPosts, setAppliedPosts] = useState([])
+    const [myTab, setMyTab] = useState(0)
 
     var idx1 = 1;
     var idx2 = 1;
     useEffect(() => {
-        fetch(`http://localhost:5001/myPosts/${user.email}`, {credentials:'include'})
+        fetch(`https://b9a11-server-six.vercel.app/myPosts/${user.email}`, {credentials:'include'})
             .then(res => res.json())
             .then(data => setMyPosts(data))
             .catch(error => console.error("Error:", error));
 
-        fetch(`http://localhost:5001/applyPosts/${user.email}`, {credentials:'include'})
+        fetch(`https://b9a11-server-six.vercel.app/applyPosts/${user.email}`, {credentials:'include'})
             .then(res => res.json())
             .then(data => setAppliedPosts(data))
             .catch(error => console.error("Error:", error));
@@ -37,8 +38,8 @@ const ManageMyPost = () => {
             <Helmet><title>VolunAid | My Posts</title></Helmet>
             <div className='w-full'>
                 <div role="tablist" className="tabs tabs-lifted">
-                    <input type="radio" name="my_tabs_1" role="tab" className="tab" aria-label="My Volunteer Need Post" />
-                    <div role="tabpanel" className="tab-content w-full  overflow-x-auto">
+                    <input type="radio" name="my_tabs_1" role="tab" className="tab" aria-label="My Volunteer Need Post" checked={myTab===0} onClick={()=>setMyTab(0)}/>
+                    <div role="tabpanel" className="tab-content w-full overflow-x-auto">
                        
                             <table className="table table-zebra">
 
@@ -55,13 +56,14 @@ const ManageMyPost = () => {
 
                                 </thead>
                                 <tbody>
+                                {myPosts.length===0 && <h1 className='text-2xl' > No Posts To Show!!</h1>}
                                     {myPosts.map((item) => <MyPost key={item._id} item={item} idx={idx1++} handleDeleteMyPost={handleDeleteMyPost}></MyPost>)}
                                 </tbody>
                             </table>
                       
                     </div>
 
-                    <input type="radio" name="my_tabs_1" role="tab" className="tab" aria-label="My Volunteer Request Post" />
+                    <input type="radio" name="my_tabs_1" role="tab" className="tab" aria-label="My Volunteer Request Post" onClick={()=>setMyTab(1)} checked={myTab===1}/>
                     <div role="tabpanel" className="tab-content w-full overflow-x-auto">
                         <table className="table table-zebra">
 
@@ -78,6 +80,7 @@ const ManageMyPost = () => {
 
                             </thead>
                             <tbody>
+                            {appliedPosts.length===0 && <h1 className='text-2xl' > No Posts To Show!!</h1>}
                                 {appliedPosts.map((item) => <AppliedPost key={item._id} idx={idx2++} item={item} handleDeleteApplied={handleDeleteApplied}></AppliedPost>)}
                             </tbody>
                         </table>

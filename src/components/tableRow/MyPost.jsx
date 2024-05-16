@@ -9,7 +9,7 @@ const MyPost = ({ item, idx, handleDeleteMyPost }) => {
     const onDelete = () => {
         handleDeleteMyPost()
 
-        fetch(`http://localhost:5001/allVolPost/${_id}`,{
+        fetch(`https://b9a11-server-six.vercel.app/allVolPost/${_id}`,{
             method: 'DELETE'
         })
         .then(res => res.json())

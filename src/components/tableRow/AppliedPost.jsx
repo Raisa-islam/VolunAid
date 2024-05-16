@@ -8,7 +8,7 @@ const AppliedPost = ({ item, idx, handleDeleteApplied }) => {
     const [unit, setUnit] = useState([])
     const deleteItem = () => {
         handleDeleteApplied(_id);
-        fetch(`http://localhost:5001/post/${_id}`,{
+        fetch(`https://b9a11-server-six.vercel.app/post/${_id}/${postId}`,{
             method: 'DELETE'
         })
         .then(res => res.json())
@@ -17,38 +17,6 @@ const AppliedPost = ({ item, idx, handleDeleteApplied }) => {
             toast.success("Cancelation of the event done")
         })
         console.log("item is deleted", _id);
-
-      
-
-        // fetch(`http://localhost:5001/addVolPost/All/${postId}`)
-        // .then(res => res.json())
-        // .then(data => setUnit(data))
-        // .catch(error => console.error("Error:", error));
-
-        // const { _id, thumbnail, title, category, description, name, email, location,noOfVol , selectedDate} = unit[0]
-
-        
-        // const noOf = noOfVol+1
-        // console.log(noOf)
-        // const updateObj = { _id, thumbnail, title, category, description, name, email, location,noOf , selectedDate} 
-
-        // fetch(`http://localhost:5001/incrementField/${item.postId}`, {
-        //     method:'PUT',
-        //     headers:{
-        //         'content-type':'application/json'
-        //     },
-        //     body: JSON.stringify(updateObj)
-        // })
-        // .then(res => res.json())
-        // .then(data=>{
-        //     console.log(data);
-            
-        // })
-        // .catch((error)=>{
-        //     console.log(error)
-           
-        // })
-
 
     }
     return (

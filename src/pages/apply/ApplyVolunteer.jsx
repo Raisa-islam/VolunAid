@@ -21,7 +21,7 @@ const ApplyVolunteer = () => {
         const itemObj = { thumbnail, title, description, category, location, selectedDate, name, email, postId,vname,vemail };
         console.log(itemObj);
 
-        fetch('http://localhost:5001/applyPosts', {
+        fetch('https://b9a11-server-six.vercel.app/applyPosts', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -48,7 +48,7 @@ const ApplyVolunteer = () => {
             console.log(noOf)
             const updateObj = { _id, thumbnail, title, category, description, name, email, location,noOf , selectedDate}
 
-            fetch(`http://localhost:5001/incrementField/${item._id}`, {
+            fetch(`https://b9a11-server-six.vercel.app/incrementField/${item._id}`, {
                 method:'PUT',
                 headers:{
                     'content-type':'application/json'
@@ -66,6 +66,7 @@ const ApplyVolunteer = () => {
             })
 
             setApplyDone(1)
+            toast.success("Successfully applied!")
     }
     return (
         <div className='container mx-auto max-w-[80%] lg:max-w-[60%] mt-12'>
@@ -136,7 +137,7 @@ const ApplyVolunteer = () => {
                                 <span className="label-text font-medium text-xl"> No. of Volunteers Needed:</span>
 
                             </div>
-                            <input type="number" placeholder="Type here" className="input input-bordered input-primary w-full md:max-w-[80%]" name='noOfVol'defaultValue={noOfVol} required readOnly/>
+                            <input type="number" placeholder="Type here" className="input input-bordered input-primary w-full md:max-w-[80%]" name='noOfVol' defaultValue={applyDone? noOfVol-1:noOfVol} required readOnly/>
 
                         </div>
 

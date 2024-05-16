@@ -22,16 +22,16 @@ const UpdatePost = () => {
         const description = e.target.elements.description.value;
         const category = e.target.elements.category.value;
         const location = e.target.elements.location.value;
-        const noOf = e.target.elements.noOfVol.value;
+        const noOfV = e.target.elements.noOfVol.value;
         const name = e.target.elements.name.value;
         const email = e.target.elements.email.value;
-
+        const noOf = parseInt(noOfV)
         console.log(thumbnail, title, description, name, email, category, location, noOfVol, uselectedDate)
-        const itemObj = { thumbnail, title, description, category, location, noOf, selectedDate, name, email };
+        const itemObj = { thumbnail   , title, description, category, location, noOf, selectedDate, name, email };
         console.log(itemObj);
 
 
-        fetch(`http://localhost:5001/incrementField/${item._id}`, {
+        fetch(`https://b9a11-server-six.vercel.app/incrementField/${item._id}`, {
             method:'PUT',
             headers:{
                 'content-type':'application/json'

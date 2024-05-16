@@ -53,24 +53,25 @@ const NeedVolunteer = () => {
                     <button onClick={() => { setGrid1(0) }}><BsGrid3X3GapFill /></button>
                     <button onClick={() => { setGrid1(1) }}><CiGrid2H /></button>
                 </div>
+                <div className='w-full overflow-x-auto'>
 
+                    <div className={grid1 ? 'my-12 table table-zebra' : 'my-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'}>
+                        {!grid1 && items.map((item) => <NeedVolunteerCard key={item._id} item={item}></NeedVolunteerCard>)}
+                        {grid1 && <><thead>
 
-                <div className={grid1 ? 'my-12 table table-zebra' : 'my-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'}>
-                    {!grid1 && items.map((item) => <NeedVolunteerCard key={item._id} item={item}></NeedVolunteerCard>)}
-                    {grid1 && <><thead>
-                       
-                        <tr className='text-lg'>
-                            <th></th>
-                            <th>Title</th>
-                            <th>Thumbnail</th>
-                            <th>Location</th>
-                            <th>Deadline</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {items.map((item)=> <NeedVolTable key={item._id} item={item} idx={idx++}></NeedVolTable>)}
-                    </tbody></>}
+                            <tr className='text-lg'>
+                                <th></th>
+                                <th>Title</th>
+                                <th>Thumbnail</th>
+                                <th>Location</th>
+                                <th>Deadline</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                            <tbody>
+                                {items.map((item) => <NeedVolTable key={item._id} item={item} idx={idx++}></NeedVolTable>)}
+                            </tbody></>}
+                    </div>
                 </div>
             </div>
 

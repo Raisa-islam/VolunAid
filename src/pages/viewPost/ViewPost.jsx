@@ -16,7 +16,8 @@ const ViewPost = () => {
         console.log('clicked')
     }
     const item = useLoaderData();
-    const {_id, thumbnail, title, category, description, name, email, location, noOfVol, selectedDate}= item
+    const {_id, thumbnail, title, category, description, name, email, location, noOfVol, selectedDate}= item;
+    const date = selectedDate.slice(0,10)
    
     useEffect(() => {
         if (parseInt(noOfVol) === 0) {
@@ -39,8 +40,11 @@ const ViewPost = () => {
                         <p className='text-lg font-medium'>Join Us, Explore Volunteer Roles</p>
                     </div>
                     <form className='mb-12'>
+                        <div className='w-full flex justify-center items-center'>
+                        <img src={thumbnail} alt="" />
+                        </div>
 
-
+                      
 
                         <div className="form-control w-full flex flex-row gap-4 justify-start items-center">
                             <div className="label w-fit">
@@ -57,13 +61,7 @@ const ViewPost = () => {
                             </div>
                             <p className='text-xl font-medium px-2 rounded-xl bg-[#b9c1eb]'># {category}</p>
                         </div>
-                        <div className="form-control w-full flex flex-row gap-4 justify-start items-center">
-                            <div className="label w-fit">
-                                <span className="label-text font-semibold text-xl">In a short:</span>
-
-                            </div>
-                            <p className='text-xl font-medium'>{thumbnail}</p>
-                        </div>
+                        
 
                         <div className="form-control w-full flex flex-row gap-4 justify-start items-center">
                             <div className="label w-fit">
@@ -73,12 +71,12 @@ const ViewPost = () => {
                             <p className='text-xl font-medium'>{name}</p>
                         </div>
 
-                        <div className="form-control w-full flex flex-row gap-4 justify-start items-center">
+                        <div className="form-control w-full flex md:flex-col gap-2 justify-start items-start">
                             <div className="label w-fit">
                                 <span className="label-text font-semibold text-xl">Description:</span>
 
                             </div>
-                            <p className='text-xl font-medium'>{description}</p>
+                            <p className='text-xl font-medium p-4'>{description}</p>
                         </div>
                         <div className="form-control w-full flex flex-row gap-4 justify-start items-center">
                             <div className="label w-fit">
@@ -101,7 +99,7 @@ const ViewPost = () => {
                                 <span className="label-text font-semibold text-xl">Deadline:</span>
 
                             </div>
-                            <p className='text-xl font-medium'>{selectedDate}</p>
+                            <p className='text-xl font-medium'>{date}</p>
                         </div>
 
                         <div className="form-control w-full flex flex-row gap-4 justify-start items-center">

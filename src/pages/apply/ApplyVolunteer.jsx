@@ -1,7 +1,7 @@
 
 import { Helmet } from 'react-helmet';
 import addvoli from '../../assets/download-removebg-preview.png'
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../providers/AuthProviders';
 import { toast } from 'react-toastify';
@@ -18,7 +18,9 @@ const ApplyVolunteer = () => {
         const postId = _id
         const vname = e.target.elements.vName.value;
         const vemail = e.target.elements.vEmail.value;
-        const itemObj = { thumbnail, title, description, category, location, selectedDate, name, email, postId,vname,vemail };
+        const suggestion = e.target.elements.suggestion.value;
+        const status = e.target.elements.status.value;
+        const itemObj = { thumbnail, title, description, category, location, selectedDate, name, email, postId,vname,vemail, suggestion, status };
         console.log(itemObj);
 
         fetch('https://b9a11-server-six.vercel.app/applyPosts', {
@@ -176,7 +178,7 @@ const ApplyVolunteer = () => {
                                 <span className="label-text font-medium text-xl">Volunteer Name:</span>
 
                             </div>
-                            <input type="text" placeholder="Type here" className="input input-bordered input-primary w-full md:max-w-[80%]" name='vName' value={user.displayName} required />
+                            <input type="text" placeholder="Type here" className="input input-bordered input-primary w-full md:max-w-[80%]" name='vName' value={user.displayName} required readOnly/>
 
 
                         </div>
@@ -186,15 +188,33 @@ const ApplyVolunteer = () => {
                                 <span className="label-text font-medium text-xl">Volunteer Email:</span>
 
                             </div>
-                            <input type="text" placeholder="Type here" className="input input-bordered input-primary w-full md:max-w-[80%]" name='vEmail' value={user.email} required  />
+                            <input type="text" placeholder="Type here" className="input input-bordered input-primary w-full md:max-w-[80%]" name='vEmail' value={user.email} required  readOnly/>
+
+
+                        </div>
+                        <div className="form-control w-full flex flex-col gap-4">
+                            <div className="label w-fit">
+                                <span className="label-text font-medium text-xl">Suggestion:</span>
+
+                            </div>
+                            <input type="text" placeholder="Type here" className="input input-bordered input-primary w-full md:max-w-[80%]" name='suggestion' required/>
+
+
+                        </div>
+                        <div className="form-control w-full flex flex-col gap-4">
+                            <div className="label w-fit">
+                                <span className="label-text font-medium text-xl">Status :</span>
+
+                            </div>
+                            <input type="text" placeholder="Type here" className="input input-bordered input-primary w-full md:max-w-[80%]" name='status' value="Requested" required  readOnly/>
 
 
                         </div>
 
                         <div className='flex justify-center'>
-                            <button className="md:flex bg-gradient-to-r from-[#495597] to-[#7794ed]  text-white px-6 py-2 rounded-2xl hover:bg-[#3d4575] transition duration-300 font-bold mt-6" disabled={applyDone===1} type='submit'>
+                            <Link to='/needVolunteer'><button className="md:flex bg-gradient-to-r from-[#495597] to-[#7794ed]  text-white px-6 py-2 rounded-2xl hover:bg-[#3d4575] transition duration-300 font-bold mt-6" disabled={applyDone===1} type='submit'>
                                 Apply
-                            </button>
+                            </button></Link>
                         </div>
 
 

@@ -47,7 +47,7 @@ const ManageMyPost = () => {
                                     <tr>
                                         <th></th>
                                         <th>Title</th> 
-                                        <th>Thumbnail</th>
+                                        <th>Location</th>
                                         <th>Deadline</th>
                                         <th></th>
                                         <th></th>
@@ -71,7 +71,7 @@ const ManageMyPost = () => {
                                 <tr>
                                     <th></th>
                                     <th>Title</th>
-                                    <th>Thumbnail</th>
+                                    <th>Organizer</th>
                                     <th>Deadline</th>
                                     <th></th>
 

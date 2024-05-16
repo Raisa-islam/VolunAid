@@ -63,7 +63,7 @@ const NeedVolunteer = () => {
                             <tr className='text-lg'>
                                 <th></th>
                                 <th>Title</th>
-                                <th>Thumbnail</th>
+                                <th>Organizer</th>
                                 <th>Location</th>
                                 <th>Deadline</th>
                                 <th></th>

@@ -11,6 +11,7 @@ import SliderCard from "../../components/slider/SliderCard";
 import { Helmet } from 'react-helmet-async';
 import { Link, useLoaderData } from 'react-router-dom';
 import NeedsNowHomeCard from '../../components/needVolunteerCard/NeedsNowHomeCard';
+import InspirationalQuotes from '../../components/slider/InspirationalQuotes';
 
 const Home = () => {
     const item = useLoaderData()
@@ -107,6 +108,10 @@ const Home = () => {
 
                 </div>
 
+            </div>
+
+            <div className='mb-12'>
+                <InspirationalQuotes/>
             </div>
             </div>
         </div>

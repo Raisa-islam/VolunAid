@@ -13,12 +13,12 @@ const ManageMyPost = () => {
     var idx1 = 1;
     var idx2 = 1;
     useEffect(() => {
-        fetch(`http://localhost:5001/myPosts/${user.email}`)
+        fetch(`http://localhost:5001/myPosts/${user.email}`, {credentials:'include'})
             .then(res => res.json())
             .then(data => setMyPosts(data))
             .catch(error => console.error("Error:", error));
 
-        fetch(`http://localhost:5001/applyPosts/${user.email}`)
+        fetch(`http://localhost:5001/applyPosts/${user.email}`, {credentials:'include'})
             .then(res => res.json())
             .then(data => setAppliedPosts(data))
             .catch(error => console.error("Error:", error));

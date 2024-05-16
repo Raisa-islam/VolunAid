@@ -97,18 +97,18 @@ const Login = () => {
                     </div>
 
                     <div className="form-control mt-6">
-                        <button className="bg-gradient-to-r from-green-400 to-blue-500 border border-gray-300 text-white px-6 py-3 rounded-lg shadow-md hover:bg-gradient-to-r hover:from-green-500 hover:to-blue-600 transition duration-300 font-bold">
+                        <button className="bg-gradient-to-r from-[#495597] to-[#7794ed] border border-gray-300 text-white px-6 py-3 rounded-lg shadow-md hover:bg-gradient-to-r hover:from-green-500 hover:to-blue-600 transition duration-300 font-bold">
                             Sign In</button>
                     </div>
                 </form>
 
                 <div className='mt-8 mb-8 flex flex-row justify-center items-center gap-2'>
-                    <div className='w-1/2'><hr /></div>
-                    <div> OR </div>
-                    <div className='w-1/2'><hr /></div>
+                    <div className='w-1/2 bg-black'><hr /></div>
+                    <div className='font-bold'> OR </div>
+                    <div className='w-1/2 bg-black h-[1px]'><hr /></div>
                 </div>
-                <div className='flex flex-col mt-5 gap-5'>
-                    <button onClick={handleGoogleSignIn} className="bg-gradient-to-r from-teal-400 to-indigo-500 border border-gray-300 text-white px-6 py-3 rounded-lg shadow-md hover:bg-gradient-to-r hover:from-teal-500 hover:to-indigo-600 transition duration-300 font-bold">
+                <div className='flex flex-row justify-center items-center mt-5 gap-5'>
+                    <button onClick={handleGoogleSignIn} className="border text-black border-gray-300 hover:text-white px-6 py-3 rounded-lg shadow-md hover:bg-gradient-to-r hover:from-[#7794ed] hover:to-[#495597] transition duration-300 font-bold">
                         Continue with Google
                     </button>
 
@@ -116,7 +116,7 @@ const Login = () => {
                         Continue with Facebook
                     </button> */}
 
-                    <button onClick={handleGithubSignIn} className="bg-gradient-to-r from-purple-400 to-pink-500 border border-gray-300 text-white px-6 py-3 rounded-lg shadow-md hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-600 transition duration-300 font-bold">
+                    <button onClick={handleGithubSignIn} className="border border-gray-300 text-black hover:text-white px-6 py-3 rounded-lg shadow-md hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-600 transition duration-300 font-bold">
                         Continue with GitHub
                     </button>
                 </div>

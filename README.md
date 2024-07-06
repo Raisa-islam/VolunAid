@@ -18,3 +18,6 @@ Features:
 - necessary routes are protected and jwt token is verified for security
 
 
+To Run it-
+1. clone the repo
+2. npm install

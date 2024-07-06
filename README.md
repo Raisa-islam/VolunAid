@@ -10,12 +10,19 @@ Currently, two official plugins are available:
 Website Name : Volun Aid
 Live site url - (https://volunteermanagement-7ef6d.web.app/)
 
+This app is made for volunteer seeking , apply for volunteer
+
 Features:
 - user can post about their volunteer needs and also apply for to be volunteer
 - user can cancel the applied post any time, also delete and update the post they create
 - one can see the post category wise
 - user can see the post by changing layouts
 - necessary routes are protected and jwt token is verified for security
+
+Technology used-
+- React
+- Node js
+- firebase
 
 
 To Run it-
